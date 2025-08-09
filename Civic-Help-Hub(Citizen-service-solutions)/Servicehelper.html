@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service Helper Dashboard - Civic Help Hub</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .mobile-menu {
+            display: none;
+        }
+        @media (max-width: 768px) {
+            .sidebar {
+                position: fixed;
+                left: -100%;
+                top: 0;
+                bottom: 0;
+                z-index: 50;
+                transition: left 0.3s ease;
+            }
+            .sidebar.active {
+                left: 0;
+            }
+            .mobile-menu {
+                display: block;
+            }
+            .stats-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+        @media (max-width: 480px) {
+            .stats-grid {
+                grid-template-columns: repeat(1, minmax(0, 1fr));
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <!-- Mobile Menu Button -->
+    <div class="mobile-menu bg-green-800 p-4 text-white md:hidden">
+        <button id="menuToggle" class="flex items-center space-x-2">
+            <i class="fas fa-bars text-xl"></i>
+            <span>Menu</span>
+        </button>
+    </div>
+
+    <div class="flex flex-col md:flex-row h-screen">
+        <!-- Sidebar -->
+        <div class="sidebar w-64 bg-green-800 text-white shadow-lg md:relative">
+            <div class="p-4 flex items-center justify-between md:border-b md:border-green-700">
+                <div class="flex items-center space-x-2">
+                    <i class="fas fa-user-circle text-3xl"></i>
+                    <div>
+                        <p class="font-bold">Priya M.</p>
+                        <p class="text-xs text-green-200">Service Helper</p>
+                        <p class="text-xs flex items-center">
+                            <i class="fas fa-star text-yellow-300 mr-1"></i>
+                            4.8 (126 tasks)
+                        </p>
+                    </div>
+                </div>
+            <button class="close-menu md:hidden text-white">
+                    <i class="fas fa-times"></i>
+            </button>
+            </div>
+            <nav class="p-4">
+                <ul class="space-y-2">
+                    <li>
+                        <a href="#" class="flex items-center space-x-2 p-2 rounded-lg bg-green-700">
+                            <i class="fas fa-home w-6"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#available" class="flex items-center space-x-2 p-2 rounded-lg hover:bg-green-700">
+                            <i class="fas fa-tasks w-6"></i>
+                            <span>Available Tasks</span>
+                            <span class="ml-auto bg-green-600 text-xs px-2 py-1 rounded-full">5</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#pending" class="flex items-center space-x-2 p-2 rounded-lg hover:bg-green-700">
+                            <i class="fas fa-hourglass-half w-6"></i>
+                            <span>Pending Tasks</span>
+                            <span class="ml-auto bg-yellow-500 text-xs px-2 py-1 rounded-full">2</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex items-center space-x-2 p-2 rounded-lg hover:bg-green-700">
+                            <i class="fas fa-comments w-6"></i>
+                            <span>Chat</span>
+                            <span class="ml-auto bg-red-500 text-xs px-2 py-1 rounded-full">3</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex items-center space-x-2 p-2 rounded-lg hover:bg-green-700">
+                            <i class="fas fa-wallet w-6"></i>
+                            <span>Payment Wallet</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex items-center space-x-2 p-2 rounded-lg hover:bg-green-700">
+                            <i class="fas fa-history w-6"></i>
+                            <span>Task History</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex items-center space-x-2 p-2 rounded-lg hover:bg-green-700">
+                            <i class="fas fa-user w-6"></i>
+                            <span>Profile</span>
+                        </a>
+                    </li>
+                    <li class="pt-4 mt-4 border-t border-green-700">
+                        <a href="#" class="flex items-center space-x-2 p-2 rounded-lg hover:bg-green-700">
+                            <i class="fas fa-sign-out-alt w-6"></i>
+                            <span>Logout</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+        <!-- Main Content -->
+        <div class="flex-1 overflow-auto">
+            <!-- Top Bar -->
+            <div class="bg-white shadow-sm p-4 flex justify-between items-center">
+                <h1 class="text-2xl font-bold text-gray-800">Service Helper Dashboard</h1>
+                <div class="flex items-center space-x-4">
+                    <div class="relative">
+                        <button class="text-gray-600 hover:text-gray-800">
+                            <i class="fas fa-bell text-xl"></i>
+                            <span class="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">5</span>
+                        </button>
+                    </div>
+                    <div class="relative">
+                        <button class="text-gray-600 hover:text-gray-800">
+                            <i class="fas fa-envelope text-xl"></i>
+                            <span class="absolute -top-1 -right-1 bg-blue-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">2</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dashboard Content -->
+            <div id="#available" class="p-6">
+                <!-- Stats Cards -->
+                <div class="stats-grid grid grid-cols-1 md:grid-cols-4 gap-6 mb-8 p-6">
+                    <div class="bg-white p-6 rounded-lg shadow-sm border-l-4 border-green-500">
+                        <div class="flex justify-between">
+                            <div>
+                                <p class="text-gray-500">Available Tasks</p>
+                                <h3 class="text-2xl font-bold">5</h3>
+                            </div>
+                            <div class="text-green-500 text-3xl">
+                                <i class="fas fa-tasks"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="#pending" class="bg-white p-6 rounded-lg shadow-sm border-l-4 border-yellow-500">
+                        <div class="flex justify-between">
+                            <div>
+                                <p class="text-gray-500">Pending Tasks</p>
+                                <h3 class="text-2xl font-bold">2</h3>
+                            </div>
+                            <div class="text-yellow-500 text-3xl">
+                                <i class="fas fa-hourglass-half"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-sm border-l-4 border-blue-500">
+                        <div class="flex justify-between">
+                            <div>
+                                <p class="text-gray-500">Total Completed</p>
+                                <h3 class="text-2xl font-bold">126</h3>
+                            </div>
+                            <div class="text-blue-500 text-3xl">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-sm border-l-4 border-purple-500">
+                        <div class="flex justify-between">
+                            <div>
+                                <p class="text-gray-500">Reward Points</p>
+                                <h3 class="text-2xl font-bold">8,450</h3>
+                            </div>
+                            <div class="text-purple-500 text-3xl">
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Available Tasks -->
+                <div class="bg-white rounded-lg shadow-sm overflow-hidden mb-8">
+                    <div class="p-4 border-b flex justify-between items-center">
+                        <h2 class="text-xl font-bold text-gray-800">Available Tasks Near You</h2>
+                        <button class="text-green-600 hover:text-green-800 font-medium">View All</button>
+                    </div>
+                    <div class="divide-y">
+                        <!-- Task 1 -->
+                        <div class="p-4 hover:bg-gray-50">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <h3 class="font-bold text-lg">Smart Card Application</h3>
+                                    <p class="text-gray-600">Help with form filling and submission at BBMP office</p>
+                                    <div class="flex items-center mt-2 text-sm">
+                                        <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded mr-2">Government</span>
+                                        <span class="text-gray-500"><i class="fas fa-map-marker-alt mr-1"></i> 1.2 km away</span>
+                                    </div>
+                                </div>
+                                <div class="text-right">
+                                    <p class="text-sm text-gray-500">Posted: 30 mins ago</p>
+                                    <p class="text-sm">Reward: <span class="font-bold">150 points</span></p>
+                                </div>
+                            </div>
+                            <div class="mt-3 flex space-x-2">
+                                <button class="bg-green-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-green-700">
+                                    <i class="fas fa-check mr-1"></i> Accept Task
+                                </button>
+                                <button class="bg-gray-100 text-gray-800 px-4 py-2 rounded-lg font-medium hover:bg-gray-200">
+                                    <i class="fas fa-eye mr-1"></i> View Details
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Task 2 -->
+                        <div class="p-4 hover:bg-gray-50">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <h3 class="font-bold text-lg">Passport Document Verification</h3>
+                                    <p class="text-gray-600">Verify documents before appointment</p>
+                                    <div class="flex items-center mt-2 text-sm">
+                                        <span class="bg-purple-100 text-purple-800 px-2 py-1 rounded mr-2">Virtual</span>
+                                        <span class="text-gray-500"><i class="fas fa-user mr-1"></i> Ravi K.</span>
+                                    </div>
+                                </div>
+                                <div class="text-right">
+                                    <p class="text-sm text-gray-500">Posted: 1 hour ago</p>
+                                    <p class="text-sm">Reward: <span class="font-bold">80 points</span></p>
+                                </div>
+                            </div>
+                            <div class="mt-3 flex space-x-2">
+                                <button class="bg-green-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-green-700">
+                                    <i class="fas fa-check mr-1"></i> Accept Task
+                                </button>
+                                <button class="bg-gray-100 text-gray-800 px-4 py-2 rounded-lg font-medium hover:bg-gray-200">
+                                    <i class="fas fa-eye mr-1"></i> View Details
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pending Tasks -->
+                <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+                    <div class="p-4 border-b flex justify-between items-center">
+                        <h2 class="text-xl font-bold text-gray-800">Your Pending Tasks</h2>
+                        <button class="text-green-600 hover:text-green-800 font-medium">View All</button>
+                    </div>
+                    <div class="divide-y">
+                        <!-- Task 1 -->
+                        <div class="p-4 hover:bg-gray-50">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <h3 class="font-bold text-lg">Property Tax Payment</h3>
+                                    <p class="text-gray-600">Help with online property tax payment</p>
+                                    <div class="flex items-center mt-2 text-sm">
+                                        <span class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded mr-2">In Progress</span>
+                                        <span class="text-gray-500"><i class="fas fa-user mr-1"></i> Suresh P.</span>
+                                    </div>
+                                </div>
+                                <div class="text-right">
+                                    <p class="text-sm text-gray-500">Accepted: 1 day ago</p>
+                                    <p class="text-sm">Due: <span class="font-bold">Today</span></p>
+                                </div>
+                            </div>
+                            <div class="mt-3 pt-3 border-t">
+                                <h4 class="font-medium mb-2">Task Progress</h4>
+                                <div class="flex items-center space-x-4">
+                                    <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                        <div class="bg-blue-600 h-2.5 rounded-full" style="width: 75%"></div>
+                                    </div>
+                                    <span class="text-sm font-medium">75%</span>
+                                </div>
+                            </div>
+                            <div class="mt-3 flex space-x-2">
+                                <button class="bg-green-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-green-700">
+                                    <i class="fas fa-comment mr-1"></i> Chat
+                                </button>
+                                <button class="bg-blue-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-blue-700">
+                                    <i class="fas fa-edit mr-1"></i> Update
+                                </button>
+                                <button class="bg-gray-100 text-gray-800 px-4 py-2 rounded-lg font-medium hover:bg-gray-200">
+                                    <i class="fas fa-eye mr-1"></i> Details
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Task 2 -->
+                        <div class="p-4 hover:bg-gray-50">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <h3 class="font-bold text-lg">LPG Cylinder Booking</h3>
+                                    <p class="text-gray-600">Assist with online LPG cylinder booking</p>
+                                    <div class="flex items-center mt-2 text-sm">
+                                        <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded mr-2">New</span>
+                                        <span class="text-gray-500"><i class="fas fa-user mr-1"></i> Meena R.</span>
+                                    </div>
+                                </div>
+                                <div class="text-right">
+                                    <p class="text-sm text-gray-500">Accepted: 2 hours ago</p>
+                                    <p class="text-sm">Due: <span class="font-bold">Tomorrow</span></p>
+                                </div>
+                            </div>
+                            <div class="mt-3 flex space-x-2">
+                                <button class="bg-green-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-green-700">
+                                    <i class="fas fa-comment mr-1"></i> Chat
+                                </button>
+                                <button class="bg-blue-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-blue-700">
+                                    <i class="fas fa-edit mr-1"></i> Update
+                                </button>
+                                <button class="bg-gray-100 text-gray-800 px-4 py-2 rounded-lg font-medium hover:bg-gray-200">
+                                    <i class="fas fa-eye mr-1"></i> Details
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.getElementById('menuToggle').addEventListener('click', function() {
+            document.querySelector('.sidebar').classList.add('active');
+        });
+        
+        document.querySelector('.close-menu').addEventListener('click', function() {
+            document.querySelector('.sidebar').classList.remove('active');
+        });
+    </script>
+    
+</body>
+</html>

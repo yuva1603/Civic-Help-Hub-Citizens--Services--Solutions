@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Civic Help Hub - Complete Platform</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Search functionality
+            const searchForm = document.getElementById('searchForm');
+            if(searchForm) {
+                searchForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const searchTerm = document.getElementById('searchInput').value;
+                    if(searchTerm) {
+                        alert(`Searching for: ${searchTerm}`);
+                        // In a real app, this would redirect to search results
+                    }
+                });
+            }
+
+            // Mobile menu toggle
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const mobileMenu = document.getElementById('mobileMenu');
+            if(mobileMenuBtn && mobileMenu) {
+                mobileMenuBtn.addEventListener('click', function() {
+                    mobileMenu.classList.toggle('hidden');
+                });
+            }
+
+            // Dashboard charts
+            const statsChart = document.getElementById('statsChart');
+            if(statsChart) {
+                new Chart(statsChart, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                        datasets: [{
+                            label: 'Tasks Created',
+                            data: [12, 19, 8, 15, 22, 18, 25],
+                            backgroundColor: 'rgba(59, 130, 246, 0.5)',
+                            borderColor: 'rgba(59, 130, 246, 1)',
+                            borderWidth: 1
+                        }, {
+                            label: 'Tasks Completed',
+                            data: [8, 12, 15, 18, 14, 20, 22],
+                            backgroundColor: 'rgba(16, 185, 129, 0.5)',
+                            borderColor: 'rgba(16, 185, 129, 1)',
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+            }
+        });
+    </script>
+    <style>
+        .card-hover {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        .progress-bar {
+            height: 8px;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        .progress-fill {
+            height: 100%;
+            transition: width 0.5s ease;
+        }
+        .active-nav {
+            border-bottom: 3px solid #3b82f6;
+            padding-bottom: 5px;
+        }
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        .search-dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            z-index: 10;
+            display: none;
+        }
+        .search-input:focus + .search-dropdown {
+            display: block;
+        }
+        .service-tab {
+            transition: all 0.3s ease;
+        }
+        .service-tab.active {
+            background-color: #3b82f6;
+            color: white;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header/Navbar with Search -->
+    <header class="bg-blue-600 text-white shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex flex-col md:flex-row justify-between items-center">
+            <div class="flex items-center justify-between w-full md:w-auto">
+                <div class="flex items-center space-x-2">
+                    <i class="fas fa-hands-helping text-2xl"></i>
+                    <a href="main.html" class="text-2xl font-bold">Civic Help Hub</a>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <button id="mobileMenuBtn" class="md:hidden text-2xl">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+
+            <!-- Desktop Navigation and Search -->
+            <div class="hidden md:flex items-center space-x-4 w-full md:w-auto mt-4 md:mt-0">
+                <nav class="hidden md:flex space-x-6">
+                    <a href="main.html" class="hover:text-blue-200">Home</a>
+                    <a href="#services" class="hover:text-blue-200">Services</a>
+                    <a href="#how-it-works" class="hover:text-blue-200">How It Works</a>
+                    <a href="#about" class="hover:text-blue-200">About</a>
+                    <a href="User_dasboard.html" class="hover:text-blue-200">Dashboard</a>
+                </nav>
+
+                <!-- Search Bar -->
+                <div class="relative w-full md:w-64">
+                    <form id="searchForm" class="relative">
+                        <input id="searchInput" type="text" placeholder="Search services, help..." 
+                               class="w-full bg-white text-gray-800 px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <button type="submit" class="absolute right-2 top-2 text-gray-600">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </form>
+                    <!-- Search Dropdown -->
+                    <div class="search-dropdown mt-1 p-2">
+                        <div class="p-2 hover:bg-gray-100 cursor-pointer">Government Services</div>
+                        <div class="p-2 hover:bg-gray-100 cursor-pointer">Personal Tasks</div>
+                        <div class="p-2 hover:bg-gray-100 cursor-pointer">Household Needs</div>
+                        <div class="p-2 hover:bg-gray-100 cursor-pointer">Smart Card Application</div>
+                        <div class="p-2 hover:bg-gray-100 cursor-pointer">Passport Assistance</div>
+                    </div>
+                </div>
+
+                <!-- User Actions -->
+                <div class="flex space-x-2">
+                    <a href="login.html" class="bg-white text-blue-600 px-4 py-2 rounded-lg font-medium hover:bg-blue-50">Login</a>
+                    <a href="Registration_kyc.html" class="bg-blue-700 px-4 py-2 rounded-lg font-medium hover:bg-blue-800">Register</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="md:hidden hidden bg-blue-700 p-4">
+            <div class="flex flex-col space-y-3">
+                <a href="main.html" class="block hover:text-blue-200">Home</a>
+                <a href="#services" class="block hover:text-blue-200">Services</a>
+                <a href="#how-it-works" class="block hover:text-blue-200">How It Works</a>
+                <a href="#about" class="block hover:text-blue-200">About</a>
+                <a href="User_dasboard.html" class="block hover:text-blue-200">Dashboard</a>
+                <div class="pt-2">
+                    <form class="relative mb-3">
+                        <input type="text" placeholder="Search..." 
+                               class="w-full bg-white text-gray-800 px-4 py-2 rounded-lg focus:outline-none">
+                    </form>
+                </div>
+                <div class="flex space-x-2">
+                    <a href="login.html" class="block bg-white text-blue-600 px-4 py-2 rounded-lg font-medium text-center hover:bg-blue-50 w-full">Login</a>
+                    <a href="Registration_kyc.html" class="block bg-blue-800 px-4 py-2 rounded-lg font-medium text-center hover:bg-blue-900 w-full">Register</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="container mx-auto px-4 py-8">
+        <!-- Dashboard Grid -->
+        <div class="dashboard-grid mb-12">
+            <!-- Quick Stats -->
+            <div class="bg-white rounded-lg shadow-md p-6 card-hover">
+                <h3 class="text-xl font-bold mb-4">Quick Stats</h3>
+                <div class="space-y-4">
+                    <div>
+                        <p class="text-gray-600">Active Requests</p>
+                        <p class="text-2xl font-bold">3</p>
+                    </div>
+                    <div>
+                        <p class="text-gray-600">Completed Tasks</p>
+                        <p class="text-2xl font-bold">12</p>
+                    </div>
+                    <div>
+                        <p class="text-gray-600">Reward Points</p>
+                        <p class="text-2xl font-bold">1,250</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Activity Chart -->
+            <div class="bg-white rounded-lg shadow-md p-6 card-hover">
+                <h3 class="text-xl font-bold mb-4">Weekly Activity</h3>
+                <canvas id="statsChart" height="200"></canvas>
+            </div>
+            
+            <!-- Quick Actions -->
+            <div class="bg-white rounded-lg shadow-md p-6 card-hover">
+                <h3 class="text-xl font-bold mb-4">Quick Actions</h3>
+                <div class="space-y-3">
+                    <a href="Governmentservice.html" class="block bg-blue-100 text-blue-800 px-4 py-3 rounded-lg hover:bg-blue-200 transition">
+                        <i class="fas fa-landmark mr-2"></i> Government Services
+                    </a>
+                    <a href="personal.html" class="block bg-purple-100 text-purple-800 px-4 py-3 rounded-lg hover:bg-purple-200 transition">
+                        <i class="fas fa-user-tie mr-2"></i> Personal Tasks
+                    </a>
+                    <a href="personal.html#household" class="block bg-green-100 text-green-800 px-4 py-3 rounded-lg hover:bg-green-200 transition">
+                        <i class="fas fa-home mr-2"></i> Household Needs
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Services Section -->
+        <section id="services" class="mb-16">
+            <h2 class="text-3xl font-bold text-center mb-8">Our Services</h2>
+            
+            <!-- Service Tabs -->
+            <div class="flex flex-wrap justify-center gap-2 mb-8">
+                <a href="Governmentservice.html" class="service-tab bg-blue-100 text-blue-800 px-4 py-2 rounded-lg font-medium hover:bg-blue-200">
+                    <i class="fas fa-landmark mr-2"></i>Government Services
+                </a>
+                <a href="personal.html" class="service-tab bg-purple-100 text-purple-800 px-4 py-2 rounded-lg font-medium hover:bg-purple-200">
+                    <i class="fas fa-user-tie mr-2"></i>Personal Tasks
+                </a>
+                <a href="personal.html#household" class="service-tab bg-green-100 text-green-800 px-4 py-2 rounded-lg font-medium hover:bg-green-200">
+                    <i class="fas fa-home mr-2"></i>Household Needs
+                </a>
+                <a href="#" class="service-tab bg-yellow-100 text-yellow-800 px-4 py-2 rounded-lg font-medium hover:bg-yellow-200">
+                    <i class="fas fa-file-alt mr-2"></i>Document Services
+                </a>
+            </div>
+            
+            <!-- Service Cards -->
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- Government Services -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden card-hover">
+                    <div class="bg-blue-600 p-4 text-white">
+                        <i class="fas fa-landmark text-3xl mb-2"></i>
+                        <h3 class="text-xl font-bold">Government Services</h3>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-600 mb-4">Help with complex government procedures and documentation</p>
+                        <ul class="space-y-2 mb-6">
+                            <li><i class="fas fa-check-circle text-blue-500 mr-2"></i> Smart Card Applications</li>
+                            <li><i class="fas fa-check-circle text-blue-500 mr-2"></i> Passport Assistance</li>
+                            <li><i class="fas fa-check-circle text-blue-500 mr-2"></i> License Renewals</li>
+                        </ul>
+                        <a href="Governmentservice.html" class="inline-block bg-blue-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-blue-700">
+                            Learn More <i class="fas fa-arrow-right ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Personal Tasks -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden card-hover">
+                    <div class="bg-purple-600 p-4 text-white">
+                        <i class="fas fa-user-tie text-3xl mb-2"></i>
+                        <h3 class="text-xl font-bold">Personal Tasks</h3>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-600 mb-4">Assistance with urgent personal errands and tasks</p>
+                        <ul class="space-y-2 mb-6">
+                            <li><i class="fas fa-check-circle text-purple-500 mr-2"></i> Document Delivery</li>
+                            <li><i class="fas fa-check-circle text-purple-500 mr-2"></i> Printing/Xerox Services</li>
+                            <li><i class="fas fa-check-circle text-purple-500 mr-2"></i> Last-Minute Errands</li>
+                        </ul>
+                        <a href="personal.html" class="inline-block bg-purple-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-purple-700">
+                            Learn More <i class="fas fa-arrow-right ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Household Needs -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden card-hover">
+                    <div class="bg-green-600 p-4 text-white">
+                        <i class="fas fa-home text-3xl mb-2"></i>
+                        <h3 class="text-xl font-bold">Household Needs</h3>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-600 mb-4">Help with utility payments and household services</p>
+                        <ul class="space-y-2 mb-6">
+                            <li><i class="fas fa-check-circle text-green-500 mr-2"></i> Bill Payments</li>
+                            <li><i class="fas fa-check-circle text-green-500 mr-2"></i> LPG Bookings</li>
+                            <li><i class="fas fa-check-circle text-green-500 mr-2"></i> Online Utility Issues</li>
+                        </ul>
+                        <a href="personal.html#household" class="inline-block bg-green-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-green-700">
+                            Learn More <i class="fas fa-arrow-right ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- How It Works Section -->
+        <section id="how-it-works" class="mb-16 py-8 bg-gray-50 rounded-xl">
+            <h2 class="text-3xl font-bold text-center mb-8">How It Works</h2>
+            <div class="grid md:grid-cols-4 gap-6 max-w-5xl mx-auto">
+                <div class="text-center p-4">
+                    <div class="bg-blue-100 w-16 h-16 mx-auto rounded-full flex items-center justify-center text-blue-600 text-2xl mb-3">
+                        1
+                    </div>
+                    <h3 class="font-bold mb-2">Post Your Request</h3>
+                    <p class="text-gray-600">Describe the help you need and provide necessary details</p>
+                </div>
+                <div class="text-center p-4">
+                    <div class="bg-blue-100 w-16 h-16 mx-auto rounded-full flex items-center justify-center text-blue-600 text-2xl mb-3">
+                        2
+                    </div>
+                    <h3 class="font-bold mb-2">Get Matched</h3>
+                    <p class="text-gray-600">Our system finds the best volunteer for your needs</p>
+                </div>
+                <div class="text-center p-4">
+                    <div class="bg-blue-100 w-16 h-16 mx-auto rounded-full flex items-center justify-center text-blue-600 text-2xl mb-3">
+                        3
+                    </div>
+                    <h3 class="font-bold mb-2">Receive Assistance</h3>
+                    <p class="text-gray-600">Get help in-person or virtually via chat/video</p>
+                </div>
+                <div class="text-center p-4">
+                    <div class="bg-blue-100 w-16 h-16 mx-auto rounded-full flex items-center justify-center text-blue-600 text-2xl mb-3">
+                        4
+                    </div>
+                    <h3 class="font-bold mb-2">Complete & Rate</h3>
+                    <p class="text-gray-600">Mark as complete and provide feedback</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dashboard Preview -->
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold text-center mb-8">User Dashboard</h2>
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                <div class="p-4 bg-blue-600 text-white flex justify-between items-center">
+                    <h3 class="text-xl font-bold">Active Requests</h3>
+                    <a href="User_dasboard.html" class="text-blue-200 hover:text-white">View All</a>
+                </div>
+                <div class="p-6">
+                    <div class="flex justify-between items-start mb-4 pb-4 border-b">
+                        <div>
+                            <h4 class="font-bold text-lg">Smart Card Application</h4>
+                            <div class="flex items-center mt-2 text-sm">
+                                <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded mr-2">In Progress</span>
+                                <span class="text-gray-500">Ramesh K.</span>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <p class="text-sm text-gray-500">Requested: 2 days ago</p>
+                            <p class="text-sm">Ref: CHH-2023-58742</p>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <h4 class="font-medium mb-2">Progress</h4>
+                        <div class="progress-bar bg-gray-200 w-full">
+                            <div class="progress-fill bg-blue-600" style="width: 60%"></div>
+                        </div>
+                        <div class="flex justify-between text-xs text-gray-500 mt-1">
+                            <span>Submitted</span>
+                            <span>Under Review</span>
+                            <span>Processing</span>
+                            <span>Completed</span>
+                        </div>
+                    </div>
+                    
+                    <div class="flex space-x-2">
+                        <button class="bg-blue-600 text-white px-3 py-1 rounded text-sm hover:bg-blue-700">
+                            <i class="fas fa-comment mr-1"></i> Chat
+                        </button>
+                        <button class="bg-gray-100 text-gray-800 px-3 py-1 rounded text-sm hover:bg-gray-200">
+                            <i class="fas fa-eye mr-1"></i> View Details
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Civic Help Hub</h3>
+                    <p>Connecting citizens with volunteers for real-time assistance with government, personal, and household needs.</p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="main.html" class="hover:text-blue-300">Home</a></li>
+                        <li><a href="#services" class="hover:text-blue-300">Services</a></li>
+                        <li><a href="#how-it-works" class="hover:text-blue-300">How It Works</a></li>
+                        <li><a href="#" class="hover:text-blue-300">About Us</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Contact</h3>
+                    <ul class="space-y-2">
+                        <li><i class="fas fa-envelope mr-2"></i> help@civichelphub.com</li>
+                        <li><i class="fas fa-phone mr-2"></i> +91 98765 43210</li>
+                        <li><i class="fas fa-map-marker-alt mr-2"></i> Bangalore, India</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Follow Us</h3>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-2xl hover:text-blue-300"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="text-2xl hover:text-blue-300"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-2xl hover:text-blue-300"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-2xl hover:text-blue-300"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-6 text-center">
+                <p>&copy; 2023 Civic Help Hub. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

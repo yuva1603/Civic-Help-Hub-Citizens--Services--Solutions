@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Government Services - Civic Help Hub</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        @media (max-width: 768px) {
+            .hero-flex {
+                flex-direction: column;
+            }
+            .service-details {
+                padding: 1rem;
+            }
+            .form-section {
+                padding: 1rem;
+            }
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header/Navbar (same as main page) -->
+        <!-- Same header as main page -->
+    <header class="bg-blue-600 text-white shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <i class="fas fa-hands-helping text-2xl"></i>
+                <h1 class="text-2xl font-bold">Civic Help Hub</h1>
+            </div>
+            <nav class="hidden md:flex space-x-6">
+                <a href="#" class="hover:text-blue-200">Home</a>
+                <a href="#" class="hover:text-blue-200">Services</a>
+                <a href="#" class="hover:text-blue-200">How It Works</a>
+                <!-- <a href="#" class="bg-white text-blue-600 px-4 py-2 rounded-lg font-medium hover:bg-blue-50">Login</a> -->
+                <a href="main.html" class="bg-blue-700 px-4 py-2 rounded-lg font-medium hover:bg-blue-800">Back-To-Main</a>
+            </nav>
+            <button class="md:hidden text-2xl">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <div class="bg-white shadow-sm py-4">
+        <div class="container mx-auto px-4">
+            <div class="flex overflow-x-auto space-x-6 py-2">
+                <a href="gov_inside.html" class="whitespace-nowrap px-4 py-2 rounded-lg bg-blue-100 text-blue-700 font-medium">
+                    <i class="fas fa-landmark mr-2"></i>Government Services
+                </a>
+                <a href="personal.html" class="whitespace-nowrap px-4 py-2 rounded-lg bg-purple-100 text-purple-700 font-medium">
+                    <i class="fas fa-user-tie mr-2"></i>Personal Tasks
+                </a>
+                <a href="Household.html" class="whitespace-nowrap px-4 py-2 rounded-lg bg-green-100 text-green-700 font-medium">
+                    <i class="fas fa-home mr-2"></i>Household Needs
+                </a>
+                <a href="Governmentservice.html" class="whitespace-nowrap px-4 py-2 rounded-lg bg-yellow-100 text-yellow-700 font-medium-2 border-blue-500">
+                    <i class="fas fa-file-alt mr-2"></i>Document Services
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Service Hero Section -->
+    <section class="bg-blue-500 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-8 md:mb-0">
+                    <h1 class="text-4xl font-bold mb-4">Government Services Assistance</h1>
+                    <p class="text-xl mb-6">Get help with complex government procedures from verified volunteers</p>
+                    <button class="bg-white text-blue-600 px-6 py-3 rounded-lg font-bold hover:bg-blue-50">Request Help Now</button>
+                </div>
+                <div class="md:w-1/2">
+                    <img src="Assets/images/gov_logo1.png" width="300" height="500" alt="Government Services" class="rounded-lg shadow-xl">
+                </div>
+                <div class="md:w-1/2">
+                    <img src="Assets/images/TN_LOGO.png" width="200" height="200" alt="Government Services" class="rounded-lg shadow-xl">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Service Details Section -->
+    <section class="py-12 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-3xl mx-auto">
+                <h2 class="text-3xl font-bold mb-8">Service Details</h2>
+                
+                <div class="mb-10">
+                    <h3 class="text-2xl font-bold mb-4 text-blue-600">Smart Card Applications</h3>
+                    <div class="bg-gray-50 p-6 rounded-lg mb-6">
+                        <h4 class="font-bold mb-2">Requirements:</h4>
+                        <ul class="list-disc pl-5 space-y-1">
+                            <li>Proof of Identity (Aadhaar, PAN, etc.)</li>
+                            <li>Proof of Address</li>
+                            <li>Passport-sized photographs</li>
+                            <li>Completed application form</li>
+                        </ul>
+                    </div>
+                    <div class="bg-gray-50 p-6 rounded-lg">
+                        <h4 class="font-bold mb-2">Process Steps:</h4>
+                        <ol class="list-decimal pl-5 space-y-2">
+                            <li>Fill out the application form with correct details</li>
+                            <li>Attach all required documents</li>
+                            <li>Submit at the designated government office</li>
+                            <li>Track application status</li>
+                            <li>Collect the smart card when ready</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="mb-10">
+                    <h3 class="text-2xl font-bold mb-4 text-blue-600">Passport Assistance</h3>
+                    <div class="bg-gray-50 p-6 rounded-lg mb-6">
+                        <h4 class="font-bold mb-2">Requirements:</h4>
+                        <ul class="list-disc pl-5 space-y-1">
+                            <li>Aadhaar Card</li>
+                            <li>Voter ID or PAN Card</li>
+                            <li>Birth Certificate</li>
+                            <li>Address Proof</li>
+                            <li>Passport-sized photographs with white background</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- More services would be listed here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Request Form Section -->
+    <section class="py-12 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="max-w-3xl mx-auto bg-white p-8 rounded-lg shadow-md">
+                <h2 class="text-3xl font-bold mb-6">Request Assistance</h2>
+                <form id="serviceRequestForm">
+                    <div class="mb-6">
+                        <label for="serviceType" class="block font-medium mb-2">Service Type</label>
+                        <select id="serviceType" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500">
+                            <option value="">Select a service</option>
+                            <option value="smart_card">Smart Card Application</option>
+                            <option value="passport">Passport Assistance</option>
+                            <option value="license">Driving License Renewal</option>
+                            <option value="property">Property Registration</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-6">
+                        <label for="description" class="block font-medium mb-2">Description of Help Needed</label>
+                        <textarea id="description" rows="4" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" placeholder="Please describe what help you need in detail..."></textarea>
+                    </div>
+
+                    <div class="mb-6">
+                        <label for="urgency" class="block font-medium mb-2">Urgency Level</label>
+                        <div class="flex space-x-4">
+                            <label class="inline-flex items-center">
+                                <input type="radio" name="urgency" value="low" class="form-radio text-blue-600">
+                                <span class="ml-2">Low (Within 1 week)</span>
+                            </label>
+                            <label class="inline-flex items-center">
+                                <input type="radio" name="urgency" value="medium" class="form-radio text-blue-600" checked>
+                                <span class="ml-2">Medium (Within 3 days)</span>
+                            </label>
+                            <label class="inline-flex items-center">
+                                <input type="radio" name="urgency" value="high" class="form-radio text-blue-600">
+                                <span class="ml-2">High (Within 24 hours)</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="mb-6">
+                        <label for="preferredHelp" class="block font-medium mb-2">Preferred Help Method</label>
+                        <div class="flex space-x-4">
+                            <label class="inline-flex items-center">
+                                <input type="radio" name="preferredHelp" value="in_person" class="form-radio text-blue-600" checked>
+                                <span class="ml-2">In-Person</span>
+                            </label>
+                            <label class="inline-flex items-center">
+                                <input type="radio" name="preferredHelp" value="virtual" class="form-radio text-blue-600">
+                                <span class="ml-2">Virtual (Chat/Video)</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="mb-6">
+                        <label class="block font-medium mb-2">Upload Required Documents</label>
+                        <div class="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center">
+                            <input type="file" id="documents" class="hidden" multiple>
+                            <label for="documents" class="cursor-pointer">
+                                <i class="fas fa-cloud-upload-alt text-4xl text-blue-500 mb-2"></i>
+                                <p class="text-gray-600">Click to upload or drag and drop</p>
+                                <p class="text-sm text-gray-500 mt-1">PDF, JPG, PNG up to 10MB</p>
+                            </label>
+                        </div>
+                        <div id="fileList" class="mt-2 text-sm text-gray-600"></div>
+                    </div>
+
+                    <button type="submit" class="w-full bg-blue-600 text-white py-3 px-4 rounded-lg font-bold hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+                        Submit Request
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Status Tracking Modal (would appear after submission) -->
+    <div id="statusModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden">
+        <div class="bg-white p-8 rounded-lg max-w-md w-full">
+            <div class="text-center mb-6">
+                <i class="fas fa-check-circle text-5xl text-green-500 mb-4"></i>
+                <h3 class="text-2xl font-bold mb-2">Request Submitted Successfully!</h3>
+                <p class="text-gray-600">Your reference number is: <span class="font-bold">CHH-2023-58742</span></p>
+            </div>
+            
+            <div class="mb-6">
+                <h4 class="font-bold mb-3">Next Steps:</h4>
+                <ol class="list-decimal pl-5 space-y-2">
+                    <li>You'll receive a notification when a volunteer accepts your request</li>
+                    <li>Communicate with the volunteer through our secure chat</li>
+                    <li>Track progress in your dashboard</li>
+                    <li>Mark as complete when finished</li>
+                </ol>
+            </div>
+            
+            <div class="flex justify-center">
+                <button onclick="window.location.href='/user/dashboard'" class="bg-blue-600 text-white px-6 py-2 rounded-lg font-medium hover:bg-blue-700"><a href="User_dasboard.html" class="text-decoration-none text-white">Go to Dashboard</a></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer (same as main page) -->
+    <footer class="bg-gray-800 text-white py-8">
+        <!-- Same footer as main page -->
+    </footer>
+
+    <script>
+        document.getElementById('serviceRequestForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // In a real app, this would submit to your backend
+            document.getElementById('statusModal').classList.remove('hidden');
+        });
+
+        // File upload display
+        document.getElementById('documents').addEventListener('change', function(e) {
+            const fileList = document.getElementById('fileList');
+            fileList.innerHTML = '';
+            
+            for (let i = 0; i < this.files.length; i++) {
+                const file = this.files[i];
+                const fileItem = document.createElement('div');
+                fileItem.className = 'flex items-center justify-between py-1';
+                fileItem.innerHTML = `
+                    <span><i class="fas fa-file-alt mr-2"></i> ${file.name}</span>
+                    <span class="text-gray-500 text-sm">${(file.size / 1024 / 1024).toFixed(2)} MB</span>
+                `;
+                fileList.appendChild(fileItem);
+            }
+        });
+    </script>
+</body>
+</html>

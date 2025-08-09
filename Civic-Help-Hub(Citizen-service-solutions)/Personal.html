@@ -1,0 +1,372 @@
+<!-- personal.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Civic Help Hub - Personal Tasks</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .service-card { transition: all 0.3s ease; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        .service-card:hover { transform: translateY(-5px); box-shadow: 0 10px 15px rgba(0,0,0,0.1); }
+        .progress-bar { height: 8px; border-radius: 4px; overflow: hidden; }
+        .progress-fill { height: 100%; transition: width 0.5s ease; }
+        .step-indicator { width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; border-radius: 50%; font-weight: bold; }
+        .active-step { background-color: #3b82f6; color: white; }
+        .task-tag { display: inline-block; padding: 3px 8px; border-radius: 12px; font-size: 0.75rem; font-weight: 500; }
+        .animate-pulse { animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header/Navbar -->
+    <header class="bg-blue-600 text-white shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <i class="fas fa-hands-helping text-2xl"></i>
+                <h1 class="text-2xl font-bold">Civic Help Hub</h1>
+            </div>
+            <nav class="hidden md:flex space-x-6">
+                <a href="#" class="hover:text-blue-200">Home</a>
+                <a href="#" class="hover:text-blue-200">Services</a>
+                <a href="#" class="hover:text-blue-200">How It Works</a>
+                <!-- <a href="#" class="bg-white text-blue-600 px-4 py-2 rounded-lg font-medium hover:bg-blue-50">Login</a> -->
+                <a href="main.html" class="bg-blue-700 px-4 py-2 rounded-lg font-medium hover:bg-blue-800">Back-To-Main</a>
+            </nav>
+            <button class="md:hidden text-2xl">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Service Navigation -->
+    <div class="bg-white shadow-sm py-4">
+        <div class="container mx-auto px-4">
+            <div class="flex overflow-x-auto space-x-6 py-2">
+                <a href="gov_inside.html" class="whitespace-nowrap px-4 py-2 rounded-lg bg-blue-100 text-blue-700 font-medium">
+                    <i class="fas fa-landmark mr-2"></i>Government Services
+                </a>
+                <a href="#" class="whitespace-nowrap px-4 py-2 rounded-lg bg-purple-100 text-purple-700 font-medium border-2 border-purple-500">
+                    <i class="fas fa-user-tie mr-2"></i>Personal Tasks
+                </a>
+                <a href="household.html" class="whitespace-nowrap px-4 py-2 rounded-lg bg-green-100 text-green-700 font-medium">
+                    <i class="fas fa-home mr-2"></i>Household Needs
+                </a>
+                <a href="Personal.html" class="whitespace-nowrap px-4 py-2 rounded-lg bg-yellow-100 text-yellow-700 font-medium">
+                    <i class="fas fa-file-alt mr-2"></i>Document Services
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Personal Tasks Hero Section -->
+    <section class="bg-gradient-to-r from-purple-600 to-indigo-700 text-white py-16">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-8 md:mb-0">
+                    <h1 class="text-4xl font-bold mb-4">Personal Tasks Assistance</h1>
+                    <p class="text-xl mb-6">Get help with urgent personal errands and tasks from verified volunteers</p>
+                    <div class="flex space-x-4">
+                        <button class="bg-white text-purple-600 px-6 py-3 rounded-lg font-bold hover:bg-purple-50">Request Help Now</button>
+                        <button class="bg-transparent border-2 border-white text-white px-6 py-3 rounded-lg font-bold hover:bg-purple-700">How It Works</button>
+                    </div>
+                </div>
+                <div class="md:w-1/2 flex justify-center">
+                    <div class="bg-white/20 backdrop-blur-sm rounded-2xl p-6 max-w-md">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-white text-purple-600 p-3 rounded-full mr-4">
+                                <i class="fas fa-shipping-fast text-2xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-xl">Urgent Deliveries</h3>
+                                <p class="text-purple-200">Get important documents delivered quickly</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center mb-4">
+                            <div class="bg-white text-purple-600 p-3 rounded-full mr-4">
+                                <i class="fas fa-print text-2xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-xl">Printing Services</h3>
+                                <p class="text-purple-200">Need something printed or scanned?</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="bg-white text-purple-600 p-3 rounded-full mr-4">
+                                <i class="fas fa-running text-2xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-xl">Last-Minute Errands</h3>
+                                <p class="text-purple-200">Running out of time? We can help!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Personal Tasks Services -->
+    <section class="py-12 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Personal Tasks We Handle</h2>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Document Delivery -->
+                <div class="service-card bg-white rounded-xl overflow-hidden border border-gray-200">
+                    <div class="bg-purple-600 p-4">
+                        <div class="flex items-center">
+                            <i class="fas fa-file-contract text-3xl text-white mr-4"></i>
+                            <h3 class="text-xl font-bold text-white">Document Delivery</h3>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-600 mb-4">Need to deliver important documents urgently? Our volunteers can help.</p>
+                        
+                        <div class="mb-6">
+                            <h4 class="font-bold mb-2 text-purple-700">Common Requests:</h4>
+                            <ul class="list-disc pl-5 space-y-1">
+                                <li>Legal documents to courts/lawyers</li>
+                                <li>Job application materials</li>
+                                <li>Academic submissions</li>
+                                <li>Contract deliveries</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-purple-50 p-4 rounded-lg mb-4">
+                            <h4 class="font-bold mb-2">Requirements:</h4>
+                            <ul class="space-y-1 text-sm">
+                                <li><i class="fas fa-check-circle text-purple-600 mr-2"></i> Document details</li>
+                                <li><i class="fas fa-check-circle text-purple-600 mr-2"></i> Pickup and drop locations</li>
+                                <li><i class="fas fa-check-circle text-purple-600 mr-2"></i> Time sensitivity</li>
+                            </ul>
+                        </div>
+                        
+                        <button class="w-full bg-purple-600 text-white py-2 rounded-lg font-medium hover:bg-purple-700">
+                            Request Service <i class="fas fa-arrow-right ml-2"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Printing & Scanning -->
+                <div class="service-card bg-white rounded-xl overflow-hidden border border-gray-200">
+                    <div class="bg-purple-600 p-4">
+                        <div class="flex items-center">
+                            <i class="fas fa-print text-3xl text-white mr-4"></i>
+                            <h3 class="text-xl font-bold text-white">Printing & Scanning</h3>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-600 mb-4">Need documents printed, scanned, or photocopied? Our helpers have you covered.</p>
+                        
+                        <div class="mb-6">
+                            <h4 class="font-bold mb-2 text-purple-700">Services Offered:</h4>
+                            <ul class="list-disc pl-5 space-y-1">
+                                <li>Document printing (black & white/color)</li>
+                                <li>Photocopying services</li>
+                                <li>Document scanning to digital</li>
+                                <li>Large format printing</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-purple-50 p-4 rounded-lg mb-4">
+                            <h4 class="font-bold mb-2">Requirements:</h4>
+                            <ul class="space-y-1 text-sm">
+                                <li><i class="fas fa-check-circle text-purple-600 mr-2"></i> File to print (digital)</li>
+                                <li><i class="fas fa-check-circle text-purple-600 mr-2"></i> Quantity and specifications</li>
+                                <li><i class="fas fa-check-circle text-purple-600 mr-2"></i> Delivery preferences</li>
+                            </ul>
+                        </div>
+                        
+                        <button class="w-full bg-purple-600 text-white py-2 rounded-lg font-medium hover:bg-purple-700">
+                            Request Service <i class="fas fa-arrow-right ml-2"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Urgent Errands -->
+                <div class="service-card bg-white rounded-xl overflow-hidden border border-gray-200">
+                    <div class="bg-purple-600 p-4">
+                        <div class="flex items-center">
+                            <i class="fas fa-running text-3xl text-white mr-4"></i>
+                            <h3 class="text-xl font-bold text-white">Urgent Errands</h3>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-600 mb-4">Stuck at work or home? Let our volunteers run your urgent errands.</p>
+                        
+                        <div class="mb-6">
+                            <h4 class="font-bold mb-2 text-purple-700">We Can Help With:</h4>
+                            <ul class="list-disc pl-5 space-y-1">
+                                <li>Picking up medications</li>
+                                <li>Grocery shopping</li>
+                                <li>Package returns</li>
+                                <li>Bank deposits</li>
+                                <li>Gift purchases</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-purple-50 p-4 rounded-lg mb-4">
+                            <h4 class="font-bold mb-2">Requirements:</h4>
+                            <ul class="space-y-1 text-sm">
+                                <li><i class="fas fa-check-circle text-purple-600 mr-2"></i> Detailed task description</li>
+                                <li><i class="fas fa-check-circle text-purple-600 mr-2"></i> Locations involved</li>
+                                <li><i class="fas fa-check-circle text-purple-600 mr-2"></i> Timeframe for completion</li>
+                            </ul>
+                        </div>
+                        
+                        <button class="w-full bg-purple-600 text-white py-2 rounded-lg font-medium hover:bg-purple-700">
+                            Request Service <i class="fas fa-arrow-right ml-2"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How Personal Tasks Work -->
+    <section class="py-12 bg-purple-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">How Personal Tasks Assistance Works</h2>
+            
+            <div class="flex flex-col md:flex-row items-center mb-12">
+                <div class="md:w-1/2 mb-8 md:mb-0">
+                    <div class="bg-white rounded-xl p-6 shadow-lg max-w-md">
+                        <div class="flex mb-4">
+                            <div class="step-indicator active-step mr-4">1</div>
+                            <div>
+                                <h3 class="font-bold text-lg">Describe Your Task</h3>
+                                <p class="text-gray-600">Tell us what you need help with and provide necessary details</p>
+                            </div>
+                        </div>
+                        <div class="flex mb-4">
+                            <div class="step-indicator bg-gray-200 text-gray-700 mr-4">2</div>
+                            <div>
+                                <h3 class="font-bold text-lg">Get Matched</h3>
+                                <p class="text-gray-600">We find the best volunteer for your specific task</p>
+                            </div>
+                        </div>
+                        <div class="flex mb-4">
+                            <div class="step-indicator bg-gray-200 text-gray-700 mr-4">3</div>
+                            <div>
+                                <h3 class="font-bold text-lg">Task Execution</h3>
+                                <p class="text-gray-600">The volunteer completes your task efficiently</p>
+                            </div>
+                        </div>
+                        <div class="flex">
+                            <div class="step-indicator bg-gray-200 text-gray-700 mr-4">4</div>
+                            <div>
+                                <h3 class="font-bold text-lg">Completion & Feedback</h3>
+                                <p class="text-gray-600">Confirm completion and rate your experience</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:w-1/2">
+                    <div class="bg-white rounded-xl p-6 shadow-lg max-w-md">
+                        <h3 class="font-bold text-xl mb-4 text-purple-700">Task in Progress: Document Delivery</h3>
+                        <div class="flex items-center mb-4">
+                            <div class="bg-gray-200 border-2 border-dashed rounded-xl w-16 h-16"></div>
+                            <div class="ml-4">
+                                <h4 class="font-bold">Ramesh K.</h4>
+                                <div class="flex items-center">
+                                    <div class="flex text-yellow-400">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star-half-alt"></i>
+                                    </div>
+                                    <span class="text-sm text-gray-600 ml-2">4.7 (87 tasks)</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <h4 class="font-medium mb-2">Progress</h4>
+                            <div class="progress-bar bg-gray-200 w-full">
+                                <div class="progress-fill bg-purple-600" style="width: 65%"></div>
+                            </div>
+                            <div class="flex justify-between text-xs text-gray-600 mt-1">
+                                <span>Task Accepted</span>
+                                <span>Pickup</span>
+                                <span>In Transit</span>
+                                <span>Delivered</span>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center justify-between mt-6">
+                            <button class="bg-purple-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-purple-700">
+                                <i class="fas fa-comment mr-1"></i> Chat with Ramesh
+                            </button>
+                            <button class="bg-gray-100 text-gray-800 px-4 py-2 rounded-lg text-sm hover:bg-gray-200">
+                                <i class="fas fa-map-marker-alt mr-1"></i> Track Location
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Civic Help Hub</h3>
+                    <p>Connecting citizens with volunteers for real-time assistance with government, personal, and household needs.</p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-blue-300">Home</a></li>
+                        <li><a href="#" class="hover:text-blue-300">Services</a></li>
+                        <li><a href="#" class="hover:text-blue-300">How It Works</a></li>
+                        <li><a href="#" class="hover:text-blue-300">About Us</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Contact</h3>
+                    <ul class="space-y-2">
+                        <li><i class="fas fa-envelope mr-2"></i> help@civichelphub.com</li>
+                        <li><i class="fas fa-phone mr-2"></i> +91 98765 43210</li>
+                        <li><i class="fas fa-map-marker-alt mr-2"></i> Bangalore, India</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Follow Us</h3>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-2xl hover:text-blue-300"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="text-2xl hover:text-blue-300"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-2xl hover:text-blue-300"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-2xl hover:text-blue-300"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-6 text-center">
+                <p>&copy; 2023 Civic Help Hub. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelectorAll('.service-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.boxShadow = '0 10px 25px rgba(0,0,0,0.15)';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.boxShadow = '0 4px 6px rgba(0,0,0,0.1)';
+            });
+        });
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            const progressFill = document.querySelector('.progress-fill');
+            setTimeout(() => {
+                progressFill.style.width = '65%';
+            }, 500);
+        });
+    </script>
+</body>
+</html>

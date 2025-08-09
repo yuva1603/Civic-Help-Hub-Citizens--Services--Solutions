@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Civic Help Hub</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body class="bg-gray-100">
+    <!-- Header (same as main page) -->
+    <header class="bg-blue-600 text-white shadow-lg">
+        <!-- Same header as main page -->
+    </header>
+
+    <!-- Registration Form -->
+    <section class="py-12">
+        <div class="container mx-auto px-4">
+            <div class="max-w-3xl mx-auto bg-white p-8 rounded-lg shadow-md">
+                <h2 class="text-3xl font-bold mb-6 text-center">Create Your Account</h2>
+                
+                <!-- Progress Steps -->
+                <div class="mb-8">
+                    <div class="flex justify-between relative">
+                        <!-- Line -->
+                        <div class="absolute top-4 left-0 right-0 h-1 bg-gray-200 z-0"></div>
+                        <!-- Steps -->
+                        <div class="flex flex-col items-center relative z-10">
+                            <div class="w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center">1</div>
+                            <span class="text-xs mt-1 text-center">Basic Info</span>
+                        </div>
+                        <div class="flex flex-col items-center relative z-10">
+                            <div class="w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center">2</div>
+                            <span class="text-xs mt-1 text-center">KYC Verification</span>
+                        </div>
+                        <div class="flex flex-col items-center relative z-10">
+                            <div class="w-8 h-8 rounded-full bg-gray-200 text-gray-600 flex items-center justify-center">3</div>
+                            <span class="text-xs mt-1 text-center">Complete</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Form -->
+                <form id="registrationForm" class="space-y-6">
+                    <h3 class="text-xl font-bold mb-4">Basic Information</h3>
+                    
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="firstName" class="block font-medium mb-1">First Name</label>
+                            <input type="text" id="firstName" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" required>
+                        </div>
+                        <div>
+                            <label for="lastName" class="block font-medium mb-1">Last Name</label>
+                            <input type="text" id="lastName" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" required>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="email" class="block font-medium mb-1">Email Address</label>
+                        <input type="email" id="email" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" required>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="phone" class="block font-medium mb-1">Mobile Number</label>
+                            <div class="flex">
+                                <select class="bg-gray-100 border border-gray-300 rounded-l-lg p-3 focus:ring-blue-500 focus:border-blue-500">
+                                    <option>+91</option>
+                                </select>
+                                <input type="tel" id="phone" class="w-full p-3 border border-gray-300 rounded-r-lg focus:ring-blue-500 focus:border-blue-500" required>
+                            </div>
+                        </div>
+                        <div>
+                            <label for="dob" class="block font-medium mb-1">Date of Birth</label>
+                            <input type="date" id="dob" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" required>
+                        </div>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="password" class="block font-medium mb-1">Password</label>
+                            <input type="password" id="password" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" required>
+                        </div>
+                        <div>
+                            <label for="confirmPassword" class="block font-medium mb-1">Confirm Password</label>
+                            <input type="password" id="confirmPassword" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" required>
+                        </div>
+                    </div>
+
+                    <div class="pt-4 border-t">
+                        <h3 class="text-xl font-bold mb-4">KYC Verification</h3>
+                        <p class="text-gray-600 mb-4">For security and to access all services, we need to verify your identity.</p>
+                        
+                        <div class="mb-6">
+                            <label class="block font-medium mb-2">Aadhaar Verification</label>
+                            <div class="bg-gray-50 p-4 rounded-lg">
+                                <div class="flex items-start mb-4">
+                                    <input type="checkbox" id="aadhaarConsent" class="mt-1 mr-2" required>
+                                    <label for="aadhaarConsent" class="text-sm">I consent to verify my Aadhaar details with UIDAI for KYC purposes</label>
+                                </div>
+                                <div class="grid md:grid-cols-2 gap-4">
+                                    <div>
+                                        <label for="aadhaarNumber" class="block text-sm font-medium mb-1">Aadhaar Number</label>
+                                        <input type="text" id="aadhaarNumber" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" placeholder="12-digit number" pattern="\d{12}" required>
+                                    </div>
+                                    <div>
+                                        <button type="button" id="verifyAadhaar" class="mt-6 bg-blue-600 text-white px-4 py-3 rounded-lg font-medium hover:bg-blue-700 w-full">Verify with OTP</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mb-6">
+                            <label class="block font-medium mb-2">Upload Documents</label>
+                            <div class="grid md:grid-cols-2 gap-4 mb-4">
+                                <div class="bg-gray-50 p-4 rounded-lg">
+                                    <label class="block text-sm font-medium mb-2">Aadhaar Front</label>
+                                    <div class="border-2 border-dashed border-gray-300 rounded-lg p-4 text-center">
+                                        <input type="file" class="hidden" id="aadhaarFront" accept="image/*,.pdf" required>
+                                        <label for="aadhaarFront" class="cursor-pointer">
+                                            <i class="fas fa-cloud-upload-alt text-3xl text-blue-500 mb-2"></i>
+                                            <p class="text-gray-600">Click to upload</p>
+                                            <p class="text-xs text-gray-500 mt-1">JPG, PNG or PDF (Max 2MB)</p>
+                                        </label>
+                                    </div>
+                                    <div id="aadhaarFrontPreview" class="mt-2 text-sm text-gray-600 hidden"></div>
+                                </div>
+                                <div class="bg-gray-50 p-4 rounded-lg">
+                                    <label class="block text-sm font-medium mb-2">Aadhaar Back</label>
+                                    <div class="border-2 border-dashed border-gray-300 rounded-lg p-4 text-center">
+                                        <input type="file" class="hidden" id="aadhaarBack" accept="image/*,.pdf" required>
+                                        <label for="aadhaarBack" class="cursor-pointer">
+                                            <i class="fas fa-cloud-upload-alt text-3xl text-blue-500 mb-2"></i>
+                                            <p class="text-gray-600">Click to upload</p>
+                                            <p class="text-xs text-gray-500 mt-1">JPG, PNG or PDF (Max 2MB)</p>
+                                        </label>
+                                    </div>
+                                    <div id="aadhaarBackPreview" class="mt-2 text-sm text-gray-600 hidden"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mb-6">
+                            <label class="block font-medium mb-2">Selfie Verification</label>
+                            <p class="text-sm text-gray-600 mb-3">Please take a clear selfie holding your Aadhaar card next to your face</p>
+                            <div class="bg-gray-50 p-4 rounded-lg">
+                                <div class="border-2 border-dashed border-gray-300 rounded-lg p-4 text-center h-48 flex flex-col items-center justify-center">
+                                    <input type="file" class="hidden" id="selfieWithAadhaar" accept="image/*" capture="user" required>
+                                    <label for="selfieWithAadhaar" class="cursor-pointer">
+                                        <i class="fas fa-camera text-3xl text-blue-500 mb-2"></i>
+                                        <p class="text-gray-600">Take a selfie with your Aadhaar</p>
+                                    </label>
+                                </div>
+                                <div id="selfiePreview" class="mt-2 text-sm text-gray-600 hidden"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start">
+                        <input type="checkbox" id="terms" class="mt-1 mr-2" required>
+                        <label for="terms" class="text-sm">I agree to the <a href="#" class="text-blue-600 hover:underline">Terms of Service</a> and <a href="#" class="text-blue-600 hover:underline">Privacy Policy</a></label>
+                    </div>
+
+                    <button type="submit" class="w-full bg-blue-600 text-white py-3 px-4 rounded-lg font-bold hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"><a href="login.html">
+                        Complete Registration</a>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- OTP Verification Modal -->
+    <div id="otpModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden">
+        <div class="bg-white p-8 rounded-lg max-w-md w-full">
+            <h3 class="text-2xl font-bold mb-4">Verify Aadhaar</h3>
+            <p class="text-gray-600 mb-6">An OTP has been sent to your Aadhaar-registered mobile number ending with <span class="font-bold">••••7890</span></p>
+            
+            <div class="mb-6">
+                <label for="otp" class="block font-medium mb-2">Enter 6-digit OTP</label>
+                <div class="flex space-x-2">
+                    <input type="text" maxlength="1" class="w-12 h-12 text-center border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 text-xl">
+                    <input type="text" maxlength="1" class="w-12 h-12 text-center border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 text-xl">
+                    <input type="text" maxlength="1" class="w-12 h-12 text-center border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 text-xl">
+                    <input type="text" maxlength="1" class="w-12 h-12 text-center border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 text-xl">
+                    <input type="text" maxlength="1" class="w-12 h-12 text-center border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 text-xl">
+                    <input type="text" maxlength="1" class="w-12 h-12 text-center border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 text-xl">
+                </div>
+            </div>
+            
+            <div class="flex justify-between">
+                <button id="resendOtp" class="text-blue-600 font-medium hover:underline">Resend OTP</button>
+                <div class="flex space-x-2">
+                    <button id="cancelOtp" class="bg-gray-200 text-gray-800 px-4 py-2 rounded-lg font-medium hover:bg-gray-300">Cancel</button>
+                    <button id="verifyOtp" class="bg-blue-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-blue-700">Verify</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer (same as main page) -->
+    <footer class="bg-gray-800 text-white py-8">
+        <!-- Same footer as main page -->
+    </footer>
+
+    <script>
+        // Handle Aadhaar verification button
+        document.getElementById('verifyAadhaar').addEventListener('click', function() {
+            const aadhaarNumber = document.getElementById('aadhaarNumber').value;
+            if (aadhaarNumber.length === 12 && /^\d+$/.test(aadhaarNumber)) {
+                document.getElementById('otpModal').classList.remove('hidden');
+            } else {
+                alert('Please enter a valid 12-digit Aadhaar number');
+            }
+        });
+
+        // Handle OTP input auto-focus
+        const otpInputs = document.querySelectorAll('#otpModal input[type="text"]');
+        otpInputs.forEach((input, index) => {
+            input.addEventListener('input', function() {
+                if (this.value.length === 1 && index < otpInputs.length - 1) {
+                    otpInputs[index + 1].focus();
+                }
+            });
+            
+            input.addEventListener('keydown', function(e) {
+                if (e.key === 'Backspace' && this.value.length === 0 && index > 0) {
+                    otpInputs[index - 1].focus();
+                }
+            });
+        });
+
+        // Close OTP modal
+        document.getElementById('cancelOtp').addEventListener('click', function() {
+            document.getElementById('otpModal').classList.add('hidden');
+        });
+
+        // Verify OTP
+        document.getElementById('verifyOtp').addEventListener('click', function() {
+            // In a real app, this would verify with your backend
+            document.getElementById('otpModal').classList.add('hidden');
+            alert('Aadhaar verified successfully!');
+        });
+
+        // Resend OTP
+        document.getElementById('resendOtp').addEventListener('click', function() {
+            alert('OTP resent to your registered mobile number');
+        });
+
+        // File upload previews
+        document.getElementById('aadhaarFront').addEventListener('change', function(e) {
+            const preview = document.getElementById('aadhaarFrontPreview');
+            preview.textContent = `Selected: ${this.files[0].name}`;
+            preview.classList.remove('hidden');
+        });
+
+        document.getElementById('aadhaarBack').addEventListener('change', function(e) {
+            const preview = document.getElementById('aadhaarBackPreview');
+            preview.textContent = `Selected: ${this.files[0].name}`;
+            preview.classList.remove('hidden');
+        });
+
+        document.getElementById('selfieWithAadhaar').addEventListener('change', function(e) {
+            const preview = document.getElementById('selfiePreview');
+            if (this.files && this.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    preview.innerHTML = `<img src="${e.target.result}" class="h-20 mt-2 rounded">`;
+                    preview.classList.remove('hidden');
+                }
+                reader.readAsDataURL(this.files[0]);
+            }
+        });
+    </script>
+</body>
+</html>
