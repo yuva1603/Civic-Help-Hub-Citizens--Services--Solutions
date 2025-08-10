@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Civic Help Hub - Admin Portal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #1abc9c;
+            --light: #ecf0f1;
+            --dark: #34495e;
+            --danger: #e74c3c;
+            --success: #2ecc71;
+            --warning: #f39c12;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #1a2a6c);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            display: flex;
+            max-width: 1100px;
+            width: 100%;
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        }
+        
+        .brand-section {
+            flex: 1;
+            background: linear-gradient(to bottom right, var(--primary), var(--secondary));
+            color: white;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .brand-section::before {
+            content: "";
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            top: -50%;
+            left: -50%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+            transform: rotate(30deg);
+        }
+        
+        .logo {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            color: var(--accent);
+        }
+        
+        .brand-section h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .brand-section p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            max-width: 400px;
+            opacity: 0.9;
+        }
+        
+        .features {
+            text-align: left;
+            margin-top: 30px;
+            width: 100%;
+            max-width: 350px;
+        }
+        
+        .feature {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+        }
+        
+        .feature i {
+            font-size: 1.5rem;
+            margin-right: 15px;
+            color: var(--accent);
+        }
+        
+        .login-section {
+            flex: 1;
+            padding: 50px 40px;
+            background: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .login-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .login-header h2 {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        .login-header p {
+            color: var(--dark);
+            opacity: 0.8;
+        }
+        
+        .login-form {
+            width: 100%;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+            position: relative;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--dark);
+        }
+        
+        .input-icon {
+            position: relative;
+        }
+        
+        .input-icon i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--secondary);
+            font-size: 1.1rem;
+        }
+        
+        .input-icon input {
+            width: 100%;
+            padding: 15px 15px 15px 45px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .input-icon input:focus {
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+            outline: none;
+        }
+        
+        .password-toggle {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: var(--dark);
+            opacity: 0.7;
+        }
+        
+        .remember-forgot {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+        
+        .remember {
+            display: flex;
+            align-items: center;
+        }
+        
+        .remember input {
+            margin-right: 8px;
+        }
+        
+        .forgot-password {
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .forgot-password:hover {
+            text-decoration: underline;
+        }
+        
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-login {
+            background: var(--secondary);
+            color: white;
+            margin-bottom: 20px;
+        }
+        
+        .btn-login:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
+        }
+        
+        .btn-demo {
+            background: var(--light);
+            color: var(--dark);
+            border: 2px solid #e0e0e0;
+        }
+        
+        .btn-demo:hover {
+            background: #f8f9fa;
+            border-color: var(--secondary);
+        }
+        
+        .security-info {
+            margin-top: 30px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid var(--accent);
+            font-size: 0.9rem;
+            color: var(--dark);
+        }
+        
+        .security-info i {
+            margin-right: 8px;
+            color: var(--accent);
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 30px;
+            color: var(--dark);
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+            
+            .brand-section {
+                padding: 30px 20px;
+            }
+            
+            .login-section {
+                padding: 40px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="brand-section">
+            <div class="logo">
+                <i class="fas fa-hands-helping"></i>
+            </div>
+            <h1>Civic Help Hub</h1>
+            <p>Citizen Services Solution</p>
+            
+            <div class="features">
+                <div class="feature">
+                    <i class="fas fa-shield-alt"></i>
+                    <div>
+                        <h3>Secure Portal</h3>
+                        <p>256-bit encryption & multi-factor authentication</p>
+                    </div>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-chart-line"></i>
+                    <div>
+                        <h3>Real-time Analytics</h3>
+                        <p>Monitor service requests and citizen feedback</p>
+                    </div>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-cogs"></i>
+                    <div>
+                        <h3>Management Tools</h3>
+                        <p>Manage users, services, and resources</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="login-section">
+            <div class="login-header">
+                <h2>Administrator Portal</h2>
+                <p>Sign in to access the management dashboard</p>
+            </div>
+            
+            <form class="login-form">
+                <div class="form-group">
+                    <label for="username">Admin ID</label>
+                    <div class="input-icon">
+                        <i class="fas fa-user"></i>
+                        <input type="text" id="username" placeholder="Enter your admin ID" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <div class="input-icon">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="password" placeholder="Enter your password" required>
+                        <span class="password-toggle" id="togglePassword">
+                            <i class="fas fa-eye"></i>
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="remember-forgot">
+                    <div class="remember">
+                        <input type="checkbox" id="remember">
+                        <label for="remember">Remember me</label>
+                    </div>
+                    <a href="#" class="forgot-password">Forgot Password?</a>
+                </div>
+                
+                <button type="register" class="btn btn-login"><a href="admin.html" style="text-decoration: none; text-white;">Sign In</a></button>
+                <button type="button" class="btn btn-demo">View Demo</button>
+                
+                <div class="security-info">
+                    <i class="fas fa-info-circle"></i>
+                    For security reasons, please log out after each session and do not share your credentials.
+                </div>
+            </form>
+            
+            <div class="copyright">
+                &copy; 2023 Civic Help Hub. All rights reserved. v2.1.5
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Toggle password visibility
+        document.getElementById('togglePassword').addEventListener('click', function() {
+            const passwordInput = document.getElementById('password');
+            const icon = this.querySelector('i');
+            
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                icon.classList.remove('fa-eye');
+                icon.classList.add('fa-eye-slash');
+            } else {
+                passwordInput.type = 'password';
+                icon.classList.remove('fa-eye-slash');
+                icon.classList.add('fa-eye');
+            }
+        });
+        
+        // Form submission handling
+        document.querySelector('.login-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            
+            // In a real application, this would be an API call to your backend
+            // For demo purposes, we'll just show an alert
+            if(username && password) {
+                // Simulate loading
+                const loginBtn = document.querySelector('.btn-login');
+                loginBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Authenticating...';
+                loginBtn.disabled = true;
+                
+                setTimeout(() => {
+                    alert('Login successful! Redirecting to admin dashboard...');
+                    loginBtn.innerHTML = 'Sign In';
+                    loginBtn.disabled = false;
+                    // In a real app: window.location.href = 'admin-dashboard.html';
+                }, 1500);
+            }
+        });
+        
+        // Demo button functionality
+        document.querySelector('.btn-demo').addEventListener('click', function() {
+            alert('Demo mode activated. Loading sample data...');
+            document.getElementById('username').value = 'admin@civichub.gov';
+            document.getElementById('password').value = '••••••••';
+        });
+    </script>
+</body>
+</html>
